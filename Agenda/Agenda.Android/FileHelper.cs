@@ -3,8 +3,7 @@ using System.IO;
 using Xamarin.Forms;
 using Agenda.Droid;
 
-[assembly: Dependency
- (typeof(FileHelper))]
+[assembly: Dependency(typeof(FileHelper))]
 namespace Agenda.Droid
 {
     public class FileHelper : IFileHelper

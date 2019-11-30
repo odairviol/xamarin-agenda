@@ -13,5 +13,31 @@ namespace Agenda
         {
             InitializeComponent();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            listView.ItemsSource = await App.Database.GetItemAsync();
+        }
+
+        private void onItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if(args != null) {
+                Navigation.PushAsync(new PagePessoa()
+                {
+                    BindingContext = args.SelectedItem as Pessoa
+                });
+            }
+        }
+
+        private void button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PagePessoa()
+            {
+                BindingContext = new Pessoa(),
+
+            });
+        }
+
     }
 }

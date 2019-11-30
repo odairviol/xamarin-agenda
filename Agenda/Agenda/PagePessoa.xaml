@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Agenda.PagePessoa"
+             Title="Dados">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,10" Orientation="Vertical">
+            <Label Text="Código" FontSize="Large"/>
+            <Entry Text="{Binding ID}"/>
+            <Label Text="Nome" FontSize="Large"/>
+            <Entry Text="{Binding Nome}" />
+            <Label Text="Telefone" FontSize="Large"/>
+            <Entry Text="{Binding Telefone}" />
+            <Label Text="e-mail" FontSize="Large"/>
+            <Entry Text="{Binding Email}" />
+            <Button Text="Salvar" FontSize="10" WidthRequest="70" Clicked="OnSavePessoa"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
