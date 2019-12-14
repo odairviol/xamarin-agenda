@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using XamarinFirebase.Helper;
 
 namespace Agenda
 {
     public partial class MainPage : ContentPage
     {
+        readonly FirebaseHelper firebaseHelper;
         public MainPage()
         {
             InitializeComponent();
+            firebaseHelper = new FirebaseHelper();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetItemAsync();
+            listView.ItemsSource = await firebaseHelper.GetAllPessoas();
         }
 
         private void onItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -39,5 +38,19 @@ namespace Agenda
             });
         }
 
+        private async void OnDelete(object sender, SelectedItemChangedEventArgs args)
+        {
+            var pessoa = args.SelectedItem as Pessoa;
+            await firebaseHelper.DeletePessoa(pessoa.ID);
+        }
+
+        public async void OnDelete(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var pessoa = mi.CommandParameter as Pessoa;
+            await firebaseHelper.DeletePessoa(pessoa.ID);
+            listView.ItemsSource = await firebaseHelper.GetAllPessoas();
+            await DisplayAlert("Alerta", "Contato removido com sucesso.", "OK");
+        }
     }
 }

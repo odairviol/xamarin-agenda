@@ -7,12 +7,15 @@
     
     <StackLayout Orientation="Vertical">
         <ListView x:Name="listView"
-                  Margin="20"
+                  Margin="10"
                   ItemSelected="onItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Nome}" XAlign="Center" YAlign="Center"/>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Remover" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <Label Text="{Binding Nome}" XAlign="Start" YAlign="Center"/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

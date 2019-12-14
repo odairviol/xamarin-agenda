@@ -5,13 +5,13 @@
              Title="Dados">
     <ContentPage.Content>
         <StackLayout Padding="10,20,10,10" Orientation="Vertical">
-            <Label Text="Código" FontSize="Large"/>
-            <Entry Text="{Binding ID}"/>
+            <!--<Label Text="Código" FontSize="Large"/>
+            <Entry Text="{Binding ID}"/>-->
             <Label Text="Nome" FontSize="Large"/>
             <Entry Text="{Binding Nome}" />
             <Label Text="Telefone" FontSize="Large"/>
             <Entry Text="{Binding Telefone}" />
-            <Label Text="e-mail" FontSize="Large"/>
+            <Label Text="E-mail" FontSize="Large"/>
             <Entry Text="{Binding Email}" />
             <Button Text="Salvar" FontSize="10" WidthRequest="70" Clicked="OnSavePessoa"/>
         </StackLayout>
